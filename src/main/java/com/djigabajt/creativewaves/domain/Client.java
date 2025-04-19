@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 public record Client(ClientId clientId, Name name) {
 
-
     private Client(Name name) {
         this(ClientId.getNext(), name);
     }
