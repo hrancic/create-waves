@@ -23,8 +23,16 @@ dependencies {
     implementation 'io.github.wimdeblauwe:htmx-spring-boot:4.0.1'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+//    kukumar (eng. cucumber)
+    testImplementation platform('io.cucumber:cucumber-bom:7.21.1')
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation platform('org.assertj:assertj-bom:3.27.3')
+
+    testImplementation 'io.cucumber:cucumber-java'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine'
+    testImplementation 'org.junit.platform:junit-platform-suite'
+    testImplementation 'org.assertj:assertj-core'
 }
 
 tasks.named('test') {
