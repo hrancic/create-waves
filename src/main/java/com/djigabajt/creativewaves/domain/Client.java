@@ -1,8 +1,16 @@
 package com.djigabajt.creativewaves.domain;
 
-public record Client(ClientId clientId) {
+import static java.util.Objects.requireNonNull;
 
-    public Client() {
-        this(ClientId.getNext());
+public record Client(ClientId clientId, Name name) {
+
+
+    private Client(Name name) {
+        this(ClientId.getNext(), name);
+    }
+
+    public static Client create(Name name) {
+        requireNonNull(name, "Client name must not be null");
+        return new Client(name);
     }
 }
