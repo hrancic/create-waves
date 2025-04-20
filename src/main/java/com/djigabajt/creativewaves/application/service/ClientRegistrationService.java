@@ -1,9 +1,10 @@
 package com.djigabajt.creativewaves.application.service;
 
+import com.djigabajt.creativewaves.application.port.inbound.ForRegistration;
 import com.djigabajt.creativewaves.application.port.outbound.ForStoringClients;
 import com.djigabajt.creativewaves.domain.Client;
 
-public class ClientRegistrationService {
+public class ClientRegistrationService implements ForRegistration {
 
     private final ForStoringClients forStoringClients;
 
@@ -11,6 +12,7 @@ public class ClientRegistrationService {
         this.forStoringClients = forStoringClients;
     }
 
+    @Override
     public ClientRegistrationResult register(Client client) {
         try {
             forStoringClients.store(client);
