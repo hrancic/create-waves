@@ -2,7 +2,8 @@ package com.djigabajt.creativewaves.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ClientTest {
 
@@ -41,4 +42,5 @@ class ClientTest {
         int hashAfterNameUpdate = client.hashCode();
         assertThat(hashBeforeNameUpdate).isEqualTo(hashAfterNameUpdate);
     }
+
 }
