@@ -7,7 +7,7 @@ import static java.util.Objects.requireNonNull;
 public final class Client {
 
     private final ClientId clientId;
-    private final Name name;
+    private Name name;
 
     private Client(Name name) {
         this.clientId = ClientId.getNext();
@@ -19,12 +19,12 @@ public final class Client {
         return new Client(name);
     }
 
-    public ClientId clientId() {
+    public ClientId getId() {
         return clientId;
     }
 
-    public Name name() {
-        return name;
+    public void updateName(Name newName) {
+        this.name = newName;
     }
 
     @Override
@@ -32,13 +32,12 @@ public final class Client {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (Client) obj;
-        return Objects.equals(this.clientId, that.clientId) &&
-                Objects.equals(this.name, that.name);
+        return Objects.equals(this.clientId, that.clientId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(clientId, name);
+        return Objects.hash(clientId);
     }
 
     @Override
@@ -47,5 +46,4 @@ public final class Client {
                 "clientId=" + clientId + ", " +
                 "name=" + name + ']';
     }
-
 }

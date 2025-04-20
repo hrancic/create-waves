@@ -11,12 +11,34 @@ class ClientTest {
     @Test
     void client_should_have_an_id() {
         Client client = Client.create(VALID_NAME);
-        assertThat(client.clientId()).isNotNull();
+        assertThat(client.getId()).isNotNull();
     }
 
     @Test
-    void client_should_have_a_name() {
+    void client_should_have_a_getName() {
         assertThatThrownBy(() -> Client.create(null))
                 .isInstanceOf(NullPointerException.class);
+    }
+
+    @Test
+    void clients_are_not_necessarily_the_same_if_their_names_match() {
+        Client client1 = Client.create(VALID_NAME);
+        Client client2 = Client.create(VALID_NAME);
+
+        assertThat(client1).isNotEqualTo(client2);
+        assertThat(client1.hashCode()).isNotEqualTo(client2.hashCode());
+    }
+
+    @Test
+    void client_stays_the_same_when_his_name_changes() {
+        // given
+        Client client = Client.create(VALID_NAME);
+        int hashBeforeNameUpdate = client.hashCode();
+        // when
+        Name newName = new Name("Johnatan", "Doe");
+        client.updateName(newName);
+        // then
+        int hashAfterNameUpdate = client.hashCode();
+        assertThat(hashBeforeNameUpdate).isEqualTo(hashAfterNameUpdate);
     }
 }
