@@ -27,7 +27,7 @@ class NameTest {
     @ParameterizedTest
     @MethodSource("givenInvalidNamesAndExpectedExceptions")
     void should_contain_firstname_and_lastname(String firstName, String lastName, Class<? extends RuntimeException> expectedException) {
-        assertThatThrownBy(()->new Name(firstName, lastName))
+        assertThatThrownBy(() -> new Name(firstName, lastName))
                 .isInstanceOf(expectedException);
 
     }

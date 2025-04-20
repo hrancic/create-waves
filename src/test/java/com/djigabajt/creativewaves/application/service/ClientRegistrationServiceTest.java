@@ -17,6 +17,7 @@ class ClientRegistrationServiceTest {
 
     @Mock
     private ForStoringClients forStoringClients;
+
     @InjectMocks
     private ClientRegistrationService clientRegistrationService;
 
