@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ScenarioSteps {
+public class ScenarioSteps extends TestApplication {
 
     @Given("I am on the client registration page")
     public void iAmOnTheClientRegistrationPage() {
